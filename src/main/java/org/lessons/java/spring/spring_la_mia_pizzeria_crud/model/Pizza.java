@@ -3,6 +3,7 @@ package org.lessons.java.spring.spring_la_mia_pizzeria_crud.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -44,6 +45,7 @@ public class Pizza {
 
     // }
 
+    // per rimuovere si può anche utilizzare cascade= CascadeType.Remove
     @OneToMany(mappedBy = "pizza")
     private List<Offert> offerts;
 
