@@ -20,6 +20,9 @@
                 <p class="card-text fs-5 text-muted">
                     Ingredienti: [[*{description}]]
                 </p>
+
+                <a th:href="@{/pizzas/{id}/offerta(id=${pizza.id})}" class="btn btn-primary btn-sm">Nuova Offerta</a>
+
             </div>
         </div>
     </main>
