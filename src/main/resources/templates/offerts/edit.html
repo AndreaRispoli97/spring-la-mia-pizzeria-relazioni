@@ -17,7 +17,7 @@
                 <th:block>
                     <h1 class="text-center fw-bold">Modify a New Offert for [[${offert.pizza.name}]]</h1>
                     <div class="row justify-content-center">
-                        <form th:action="@{/offerts/edit/${id}(id=${offert.id})}" th:object="${offert}" method="post">
+                        <form th:action="@{/offerts/edit/{id}(id=${offert.id})}" th:object="${offert}" method="post">
 
                             <!-- Campo nascosto per l'id della pizza -->
                             <input type="hidden" th:field="*{pizza.id}" />
