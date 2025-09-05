@@ -15,12 +15,13 @@
         <div class="row">
             <div class="col-12">
                 <th:block>
-                    <h1 class="text-center fw-bold">Create a New Offert for [[${offert.pizza.name}]]</h1>
+                    <h1 class="text-center fw-bold">Modify a New Offert for [[${offert.pizza.name}]]</h1>
                     <div class="row justify-content-center">
-                        <form th:action="@{/offerts/create}" th:object="${offert}" method="post">
+                        <form th:action="@{/offerts/edit/${id}(id=${offert.id})}" th:object="${offert}" method="post">
 
                             <!-- Campo nascosto per l'id della pizza -->
                             <input type="hidden" th:field="*{pizza.id}" />
+                            <input type="hidden" th:field="*{id}" />
 
                             <div class="mb-3">
                                 <label class="form-label" for="titleOffer">Title Offer:</label>
@@ -56,7 +57,7 @@
                             </div>
 
                             <div class="mb-3 f-flex-justify-content-between">
-                                <input type="submit" class="btn btn-primary" value="Create">
+                                <input type="submit" class="btn btn-primary" value="Update">
                                 <input type="reset" class="btn btn-warning" value="Reset">
                             </div>
                         </form>

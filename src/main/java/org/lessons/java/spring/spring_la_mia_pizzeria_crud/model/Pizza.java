@@ -47,6 +47,14 @@ public class Pizza {
     @OneToMany(mappedBy = "pizza")
     private List<Offert> offerts;
 
+    public List<Offert> getOfferts() {
+        return this.offerts;
+    }
+
+    public void setOfferts(List<Offert> offerts) {
+        this.offerts = offerts;
+    }
+
     public Integer getId() {
         return this.id;
     }
