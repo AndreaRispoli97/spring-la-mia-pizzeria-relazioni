@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="description">Ingredients: </label>
+                                <label class="form-label" for="description">Descrizione: </label>
                                 <textarea id="description" class="form-control" th:field="*{description}"
                                     th:errorClass="is-invalid"></textarea>
                                 <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
@@ -44,6 +44,16 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ingredienti:</label>
+                                <div class="single-ingredient form-check" th:each="ingredient : ${ingredients}">
+                                    <input type="checkbox" th:id="|ingredient-${ingredient.id}|"
+                                        th:field="${pizza.ingredients}" th:value="${ingredient.id}">
+                                    <label class="form-check-label" th:for="|ingredient-${ingredient.id}|"
+                                        th:text="${ingredient.name}"></label>
+                                </div>
+
                             </div>
 
                             <div class="mb-3">

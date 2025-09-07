@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.7/css/bootstrap.min.css}" />
+    <title>Modifica Ingredienti</title>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/fragments :: navbar}"></th:block>
+
+    <main class="container">
+        <div class="col-8 container mx-auto">
+            <div class="mb-3 mt-3">
+
+                <h1 th:if="${edit}">Ingredient: [[${ingredient.name}]]</h1>
+                <h1 th:unless="${edit}">Ingredient to create</h1>
+            </div>
+
+            <form th:action="${edit}? @{/ingredients/edit/{id}(id=${ingredient.id})} : @{/ingredients/create}"
+                th:object="${ingredient}" method="post" class="mb-5">
+
+                <input type="hidden" th:field="*{id}">
+
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name:</label>
+                    <input class="form-control" type="text" id="text" th:field="*{name}" th:errorclass="is-invalid">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
+                        <ul>
+                            <li th:each="error : ${#fields.errors('name')}" th:text="${error}"></li>
+                        </ul>
+                    </div>
+                </div>
+                <button th:if="${edit}" type="submit" class="btn btn-primary">Edit ingredients</button>
+                <button th:unless="${edit}" type="submit" class="btn btn-primary">Create ingredient</button>
+        </div>
+
+
+        </form>
+
+        </div>
+    </main>
+
+</body>
+
+</html>

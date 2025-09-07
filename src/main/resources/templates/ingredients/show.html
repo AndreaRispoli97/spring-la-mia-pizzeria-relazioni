@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.7/css/bootstrap.min.css}" />
+    <title>Modifica Ingredienti</title>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/fragments :: navbar}"></th:block>
+
+    <main class="container">
+        <div class="container mx-auto mt-5 mb-5">
+            <div th:object="${ingredient}">
+                <div class="card-body">
+                    <h1 class="card-title">Name Ingredient: [[*{name}]]</h1>
+                    <p>Pizze with this ingredient: [[*{pizzas.size()}]]</h1>
+                </div>
+    </main>
+
+</body>
+
+</html>
