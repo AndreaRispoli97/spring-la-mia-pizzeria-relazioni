@@ -3,12 +3,14 @@ package org.lessons.java.spring.spring_la_mia_pizzeria_crud.model;
 import java.math.BigDecimal;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -45,6 +47,7 @@ public class Pizza {
 
     // }
 
+    // RELAZIONI
     // per rimuovere si può anche utilizzare cascade= CascadeType.Remove
     @OneToMany(mappedBy = "pizza")
     private List<Offert> offerts;
@@ -56,6 +59,20 @@ public class Pizza {
     public void setOfferts(List<Offert> offerts) {
         this.offerts = offerts;
     }
+
+    @ManyToMany
+    @JoinTable(name = "pizza_ingredient", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<Ingredient> ingredients;
+
+    public List<Ingredient> getIngredients() {
+        return this.ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    // FINE PARTE RELAZIONI
 
     public Integer getId() {
         return this.id;
